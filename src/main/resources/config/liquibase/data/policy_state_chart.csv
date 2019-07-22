@@ -1,0 +1,11 @@
+id;current_task;current_payload;status;is_processing;created_date;modified_date
+1;invoice;../data/blob/hipster.txt;false;false;2019-07-22;2019-07-21
+2;Bahrain;../data/blob/hipster.txt;false;false;2019-07-22;2019-07-22
+3;Mississippi;../data/blob/hipster.txt;false;false;2019-07-21;2019-07-21
+4;contingency;../data/blob/hipster.txt;false;true;2019-07-21;2019-07-21
+5;Unbranded Fresh Pizza;../data/blob/hipster.txt;true;true;2019-07-22;2019-07-21
+6;Principal orchid;../data/blob/hipster.txt;false;true;2019-07-22;2019-07-21
+7;4th generation interfaces;../data/blob/hipster.txt;true;true;2019-07-21;2019-07-21
+8;Gorgeous Fresh Bike Inves;../data/blob/hipster.txt;false;true;2019-07-22;2019-07-21
+9;Baby IB Refined Frozen To;../data/blob/hipster.txt;false;true;2019-07-21;2019-07-21
+10;support;../data/blob/hipster.txt;false;false;2019-07-21;2019-07-22

@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-derived-docs-heading">Create or edit a Derived Docs</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_docContent">Doc Content</label>
+                    <textarea class="form-control" name="docContent" id="field_docContent"
+                              formControlName="docContent"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <div class="input-group">
+                        <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" formControlName="createdDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modifiedDate">Modified Date</label>
+                    <div class="input-group">
+                        <input id="field_modifiedDate" type="text" class="form-control" name="modifiedDate" ngbDatepicker  #modifiedDateDp="ngbDatepicker" formControlName="modifiedDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="modifiedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_policyDetails">Policy Details</label>
+                    <select class="form-control" id="field_policyDetails" name="policyDetails" formControlName="policyDetails">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="policyDetailsOption.id === editForm.get('policyDetails').value?.id ? editForm.get('policyDetails').value : policyDetailsOption" *ngFor="let policyDetailsOption of policydetails; trackBy: trackPolicyDetailsById">{{policyDetailsOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_docTypeReference">Doc Type Reference</label>
+                    <select class="form-control" id="field_docTypeReference" name="docTypeReference" formControlName="docTypeReference">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="docTypeReferenceOption.id === editForm.get('docTypeReference').value?.id ? editForm.get('docTypeReference').value : docTypeReferenceOption" *ngFor="let docTypeReferenceOption of doctypereferences; trackBy: trackDocTypeReferenceById">{{docTypeReferenceOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

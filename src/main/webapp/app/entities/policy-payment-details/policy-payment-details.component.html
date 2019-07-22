@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span>Policy Payment Details</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-policy-payment-details" [routerLink]="['/policy-payment-details/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Policy Payment Details
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="policyPaymentDetails?.length === 0">
+        <span>No policyPaymentDetails found</span>
+    </div>
+    <div class="table-responsive" *ngIf="policyPaymentDetails?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paymentTransactionNo"><span>Payment Transaction No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="prnNo"><span>Prn No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="encryptedPrnNo"><span>Encrypted Prn No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="totalFirstPremium"><span>Total First Premium</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paymentMethod"><span>Payment Method</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="esbPaymentMode"><span>Esb Payment Mode</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paymentStatus"><span>Payment Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdDate"><span>Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedDate"><span>Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdTime"><span>Created Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedTime"><span>Modified Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let policyPaymentDetails of policyPaymentDetails ;trackBy: trackId">
+                <td><a [routerLink]="['/policy-payment-details', policyPaymentDetails.id, 'view' ]">{{policyPaymentDetails.id}}</a></td>
+                <td>{{policyPaymentDetails.paymentTransactionNo}}</td>
+                <td>{{policyPaymentDetails.prnNo}}</td>
+                <td>{{policyPaymentDetails.encryptedPrnNo}}</td>
+                <td>{{policyPaymentDetails.totalFirstPremium}}</td>
+                <td>{{policyPaymentDetails.paymentMethod}}</td>
+                <td>{{policyPaymentDetails.esbPaymentMode}}</td>
+                <td>{{policyPaymentDetails.paymentStatus}}</td>
+                <td>{{policyPaymentDetails.createdDate | date:'mediumDate'}}</td>
+                <td>{{policyPaymentDetails.modifiedDate | date:'mediumDate'}}</td>
+                <td>{{policyPaymentDetails.createdTime | date:'medium'}}</td>
+                <td>{{policyPaymentDetails.modifiedTime | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/policy-payment-details', policyPaymentDetails.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/policy-payment-details', policyPaymentDetails.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'policy-payment-details', { outlets: { popup: policyPaymentDetails.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

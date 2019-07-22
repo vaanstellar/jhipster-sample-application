@@ -1,0 +1,213 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="policyDetails">
+            <h2><span>Policy Details</span> {{policyDetails.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Policy Code</span></dt>
+                <dd>
+                    <span>{{policyDetails.policyCode}}</span>
+                </dd>
+                <dt><span>Plan Code</span></dt>
+                <dd>
+                    <span>{{policyDetails.planCode}}</span>
+                </dd>
+                <dt><span>Plan Type</span></dt>
+                <dd>
+                    <span>{{policyDetails.planType}}</span>
+                </dd>
+                <dt><span>Agent Code</span></dt>
+                <dd>
+                    <span>{{policyDetails.agentCode}}</span>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <span>{{policyDetails.status}}</span>
+                </dd>
+                <dt><span>Rider Names</span></dt>
+                <dd>
+                    <span>{{policyDetails.riderNames}}</span>
+                </dd>
+                <dt><span>Contact By Call</span></dt>
+                <dd>
+                    <span>{{policyDetails.contactByCall}}</span>
+                </dd>
+                <dt><span>Contact By SMS</span></dt>
+                <dd>
+                    <span>{{policyDetails.contactBySMS}}</span>
+                </dd>
+                <dt><span>Nric</span></dt>
+                <dd>
+                    <span>{{policyDetails.nric}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{policyDetails.name}}</span>
+                </dd>
+                <dt><span>Gender</span></dt>
+                <dd>
+                    <span>{{policyDetails.gender}}</span>
+                </dd>
+                <dt><span>Birth Date</span></dt>
+                <dd>
+                    <span>{{policyDetails.birthDate}}</span>
+                </dd>
+                <dt><span>Email Id</span></dt>
+                <dd>
+                    <span>{{policyDetails.emailId}}</span>
+                </dd>
+                <dt><span>Phone No</span></dt>
+                <dd>
+                    <span>{{policyDetails.phoneNo}}</span>
+                </dd>
+                <dt><span>Education Level</span></dt>
+                <dd>
+                    <span>{{policyDetails.educationLevel}}</span>
+                </dd>
+                <dt><span>Residential Postal Code</span></dt>
+                <dd>
+                    <span>{{policyDetails.residentialPostalCode}}</span>
+                </dd>
+                <dt><span>Residential Unit No</span></dt>
+                <dd>
+                    <span>{{policyDetails.residentialUnitNo}}</span>
+                </dd>
+                <dt><span>Residential Address 1</span></dt>
+                <dd>
+                    <span>{{policyDetails.residentialAddress1}}</span>
+                </dd>
+                <dt><span>Residential Address 2</span></dt>
+                <dd>
+                    <span>{{policyDetails.residentialAddress2}}</span>
+                </dd>
+                <dt><span>Residential Address 3</span></dt>
+                <dd>
+                    <span>{{policyDetails.residentialAddress3}}</span>
+                </dd>
+                <dt><span>Residential Address 4</span></dt>
+                <dd>
+                    <span>{{policyDetails.residentialAddress4}}</span>
+                </dd>
+                <dt><span>Residential Same As Mailing</span></dt>
+                <dd>
+                    <span>{{policyDetails.residentialSameAsMailing}}</span>
+                </dd>
+                <dt><span>Mailing Postal Code</span></dt>
+                <dd>
+                    <span>{{policyDetails.mailingPostalCode}}</span>
+                </dd>
+                <dt><span>Mailing Unit No</span></dt>
+                <dd>
+                    <span>{{policyDetails.mailingUnitNo}}</span>
+                </dd>
+                <dt><span>Mailing Address 1</span></dt>
+                <dd>
+                    <span>{{policyDetails.mailingAddress1}}</span>
+                </dd>
+                <dt><span>Mailing Address 2</span></dt>
+                <dd>
+                    <span>{{policyDetails.mailingAddress2}}</span>
+                </dd>
+                <dt><span>Mailing Address 3</span></dt>
+                <dd>
+                    <span>{{policyDetails.mailingAddress3}}</span>
+                </dd>
+                <dt><span>Mailing Address 4</span></dt>
+                <dd>
+                    <span>{{policyDetails.mailingAddress4}}</span>
+                </dd>
+                <dt><span>Occupation</span></dt>
+                <dd>
+                    <span>{{policyDetails.occupation}}</span>
+                </dd>
+                <dt><span>Residential Status</span></dt>
+                <dd>
+                    <span>{{policyDetails.residentialStatus}}</span>
+                </dd>
+                <dt><span>Nationality</span></dt>
+                <dd>
+                    <span>{{policyDetails.nationality}}</span>
+                </dd>
+                <dt><span>Place Of Nationality</span></dt>
+                <dd>
+                    <span>{{policyDetails.placeOfNationality}}</span>
+                </dd>
+                <dt><span>Country Of Birth</span></dt>
+                <dd>
+                    <span>{{policyDetails.countryOfBirth}}</span>
+                </dd>
+                <dt><span>Place Of Birth</span></dt>
+                <dd>
+                    <span>{{policyDetails.placeOfBirth}}</span>
+                </dd>
+                <dt><span>Occupation Code</span></dt>
+                <dd>
+                    <span>{{policyDetails.occupationCode}}</span>
+                </dd>
+                <dt><span>Name Of Employer</span></dt>
+                <dd>
+                    <span>{{policyDetails.nameOfEmployer}}</span>
+                </dd>
+                <dt><span>Annual Income</span></dt>
+                <dd>
+                    <span>{{policyDetails.annualIncome}}</span>
+                </dd>
+                <dt><span>Address Type</span></dt>
+                <dd>
+                    <span>{{policyDetails.addressType}}</span>
+                </dd>
+                <dt><span>Marital Status</span></dt>
+                <dd>
+                    <span>{{policyDetails.maritalStatus}}</span>
+                </dd>
+                <dt><span>Uinfin</span></dt>
+                <dd>
+                    <span>{{policyDetails.uinfin}}</span>
+                </dd>
+                <dt><span>My Info Verified</span></dt>
+                <dd>
+                    <span>{{policyDetails.myInfoVerified}}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{policyDetails.createdDate}}</span>
+                </dd>
+                <dt><span>Modified Date</span></dt>
+                <dd>
+                    <span>{{policyDetails.modifiedDate}}</span>
+                </dd>
+                <dt><span>Policy Payment Details</span></dt>
+                <dd>
+                    <div *ngIf="policyDetails.policyPaymentDetails">
+                        <a [routerLink]="['/policy-payment-details', policyDetails.policyPaymentDetails?.id, 'view']">{{policyDetails.policyPaymentDetails?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Policy State Chart</span></dt>
+                <dd>
+                    <div *ngIf="policyDetails.policyStateChart">
+                        <a [routerLink]="['/policy-state-chart', policyDetails.policyStateChart?.id, 'view']">{{policyDetails.policyStateChart?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>User Details</span></dt>
+                <dd>
+                    <div *ngIf="policyDetails.userDetails">
+                        <a [routerLink]="['/user-details', policyDetails.userDetails?.id, 'view']">{{policyDetails.userDetails?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/policy-details', policyDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

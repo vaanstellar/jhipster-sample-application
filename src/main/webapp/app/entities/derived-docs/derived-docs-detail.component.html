@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="derivedDocs">
+            <h2><span>Derived Docs</span> {{derivedDocs.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Doc Content</span></dt>
+                <dd>
+                    <span>{{derivedDocs.docContent}}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{derivedDocs.createdDate}}</span>
+                </dd>
+                <dt><span>Modified Date</span></dt>
+                <dd>
+                    <span>{{derivedDocs.modifiedDate}}</span>
+                </dd>
+                <dt><span>Policy Details</span></dt>
+                <dd>
+                    <div *ngIf="derivedDocs.policyDetails">
+                        <a [routerLink]="['/policy-details', derivedDocs.policyDetails?.id, 'view']">{{derivedDocs.policyDetails?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Doc Type Reference</span></dt>
+                <dd>
+                    <div *ngIf="derivedDocs.docTypeReference">
+                        <a [routerLink]="['/doc-type-reference', derivedDocs.docTypeReference?.id, 'view']">{{derivedDocs.docTypeReference?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/derived-docs', derivedDocs.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

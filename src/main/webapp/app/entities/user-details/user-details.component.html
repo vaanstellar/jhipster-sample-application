@@ -1,0 +1,127 @@
+<div>
+    <h2 id="page-heading">
+        <span>User Details</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-user-details" [routerLink]="['/user-details/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new User Details
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="userDetails?.length === 0">
+        <span>No userDetails found</span>
+    </div>
+    <div class="table-responsive" *ngIf="userDetails?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nric"><span>Nric</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="gender"><span>Gender</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="birthDate"><span>Birth Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailId"><span>Email Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneNo"><span>Phone No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="educationLevel"><span>Education Level</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialPostalCode"><span>Residential Postal Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialUnitNo"><span>Residential Unit No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialAddress1"><span>Residential Address 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialAddress2"><span>Residential Address 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialAddress3"><span>Residential Address 3</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialAddress4"><span>Residential Address 4</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialSameAsMailing"><span>Residential Same As Mailing</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingPostalCode"><span>Mailing Postal Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingUnitNo"><span>Mailing Unit No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingAddress1"><span>Mailing Address 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingAddress2"><span>Mailing Address 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingAddress3"><span>Mailing Address 3</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingAddress4"><span>Mailing Address 4</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="occupation"><span>Occupation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="occupationCode"><span>Occupation Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialStatus"><span>Residential Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nationality"><span>Nationality</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="placeOfNationality"><span>Place Of Nationality</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="countryOfBirth"><span>Country Of Birth</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="placeOfBirth"><span>Place Of Birth</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nameOfEmployer"><span>Name Of Employer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="annualIncome"><span>Annual Income</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="addressType"><span>Address Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="maritalStatus"><span>Marital Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="uinfin"><span>Uinfin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdDate"><span>Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedDate"><span>Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="hash1"><span>Hash 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="hash2"><span>Hash 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let userDetails of userDetails ;trackBy: trackId">
+                <td><a [routerLink]="['/user-details', userDetails.id, 'view' ]">{{userDetails.id}}</a></td>
+                <td>{{userDetails.nric}}</td>
+                <td>{{userDetails.name}}</td>
+                <td>{{userDetails.gender}}</td>
+                <td>{{userDetails.birthDate}}</td>
+                <td>{{userDetails.emailId}}</td>
+                <td>{{userDetails.phoneNo}}</td>
+                <td>{{userDetails.educationLevel}}</td>
+                <td>{{userDetails.residentialPostalCode}}</td>
+                <td>{{userDetails.residentialUnitNo}}</td>
+                <td>{{userDetails.residentialAddress1}}</td>
+                <td>{{userDetails.residentialAddress2}}</td>
+                <td>{{userDetails.residentialAddress3}}</td>
+                <td>{{userDetails.residentialAddress4}}</td>
+                <td>{{userDetails.residentialSameAsMailing}}</td>
+                <td>{{userDetails.mailingPostalCode}}</td>
+                <td>{{userDetails.mailingUnitNo}}</td>
+                <td>{{userDetails.mailingAddress1}}</td>
+                <td>{{userDetails.mailingAddress2}}</td>
+                <td>{{userDetails.mailingAddress3}}</td>
+                <td>{{userDetails.mailingAddress4}}</td>
+                <td>{{userDetails.occupation}}</td>
+                <td>{{userDetails.occupationCode}}</td>
+                <td>{{userDetails.residentialStatus}}</td>
+                <td>{{userDetails.nationality}}</td>
+                <td>{{userDetails.placeOfNationality}}</td>
+                <td>{{userDetails.countryOfBirth}}</td>
+                <td>{{userDetails.placeOfBirth}}</td>
+                <td>{{userDetails.nameOfEmployer}}</td>
+                <td>{{userDetails.annualIncome}}</td>
+                <td>{{userDetails.addressType}}</td>
+                <td>{{userDetails.maritalStatus}}</td>
+                <td>{{userDetails.uinfin}}</td>
+                <td>{{userDetails.createdDate | date:'mediumDate'}}</td>
+                <td>{{userDetails.modifiedDate | date:'mediumDate'}}</td>
+                <td>{{userDetails.hash1}}</td>
+                <td>{{userDetails.hash2}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/user-details', userDetails.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/user-details', userDetails.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'user-details', { outlets: { popup: userDetails.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

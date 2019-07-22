@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span>Policy State Charts</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-policy-state-chart" [routerLink]="['/policy-state-chart/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Policy State Chart
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="policyStateCharts?.length === 0">
+        <span>No policyStateCharts found</span>
+    </div>
+    <div class="table-responsive" *ngIf="policyStateCharts?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="currentTask"><span>Current Task</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="currentPayload"><span>Current Payload</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status"><span>Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="isProcessing"><span>Is Processing</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdDate"><span>Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedDate"><span>Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let policyStateChart of policyStateCharts ;trackBy: trackId">
+                <td><a [routerLink]="['/policy-state-chart', policyStateChart.id, 'view' ]">{{policyStateChart.id}}</a></td>
+                <td>{{policyStateChart.currentTask}}</td>
+                <td>{{policyStateChart.currentPayload}}</td>
+                <td>{{policyStateChart.status}}</td>
+                <td>{{policyStateChart.isProcessing}}</td>
+                <td>{{policyStateChart.createdDate | date:'mediumDate'}}</td>
+                <td>{{policyStateChart.modifiedDate | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/policy-state-chart', policyStateChart.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/policy-state-chart', policyStateChart.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'policy-state-chart', { outlets: { popup: policyStateChart.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
