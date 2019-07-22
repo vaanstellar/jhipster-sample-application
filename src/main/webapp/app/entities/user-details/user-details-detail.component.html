@@ -1,0 +1,167 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userDetails">
+            <h2><span>User Details</span> {{userDetails.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nric</span></dt>
+                <dd>
+                    <span>{{userDetails.nric}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{userDetails.name}}</span>
+                </dd>
+                <dt><span>Gender</span></dt>
+                <dd>
+                    <span>{{userDetails.gender}}</span>
+                </dd>
+                <dt><span>Birth Date</span></dt>
+                <dd>
+                    <span>{{userDetails.birthDate}}</span>
+                </dd>
+                <dt><span>Email Id</span></dt>
+                <dd>
+                    <span>{{userDetails.emailId}}</span>
+                </dd>
+                <dt><span>Phone No</span></dt>
+                <dd>
+                    <span>{{userDetails.phoneNo}}</span>
+                </dd>
+                <dt><span>Education Level</span></dt>
+                <dd>
+                    <span>{{userDetails.educationLevel}}</span>
+                </dd>
+                <dt><span>Residential Postal Code</span></dt>
+                <dd>
+                    <span>{{userDetails.residentialPostalCode}}</span>
+                </dd>
+                <dt><span>Residential Unit No</span></dt>
+                <dd>
+                    <span>{{userDetails.residentialUnitNo}}</span>
+                </dd>
+                <dt><span>Residential Address 1</span></dt>
+                <dd>
+                    <span>{{userDetails.residentialAddress1}}</span>
+                </dd>
+                <dt><span>Residential Address 2</span></dt>
+                <dd>
+                    <span>{{userDetails.residentialAddress2}}</span>
+                </dd>
+                <dt><span>Residential Address 3</span></dt>
+                <dd>
+                    <span>{{userDetails.residentialAddress3}}</span>
+                </dd>
+                <dt><span>Residential Address 4</span></dt>
+                <dd>
+                    <span>{{userDetails.residentialAddress4}}</span>
+                </dd>
+                <dt><span>Residential Same As Mailing</span></dt>
+                <dd>
+                    <span>{{userDetails.residentialSameAsMailing}}</span>
+                </dd>
+                <dt><span>Mailing Postal Code</span></dt>
+                <dd>
+                    <span>{{userDetails.mailingPostalCode}}</span>
+                </dd>
+                <dt><span>Mailing Unit No</span></dt>
+                <dd>
+                    <span>{{userDetails.mailingUnitNo}}</span>
+                </dd>
+                <dt><span>Mailing Address 1</span></dt>
+                <dd>
+                    <span>{{userDetails.mailingAddress1}}</span>
+                </dd>
+                <dt><span>Mailing Address 2</span></dt>
+                <dd>
+                    <span>{{userDetails.mailingAddress2}}</span>
+                </dd>
+                <dt><span>Mailing Address 3</span></dt>
+                <dd>
+                    <span>{{userDetails.mailingAddress3}}</span>
+                </dd>
+                <dt><span>Mailing Address 4</span></dt>
+                <dd>
+                    <span>{{userDetails.mailingAddress4}}</span>
+                </dd>
+                <dt><span>Occupation</span></dt>
+                <dd>
+                    <span>{{userDetails.occupation}}</span>
+                </dd>
+                <dt><span>Occupation Code</span></dt>
+                <dd>
+                    <span>{{userDetails.occupationCode}}</span>
+                </dd>
+                <dt><span>Residential Status</span></dt>
+                <dd>
+                    <span>{{userDetails.residentialStatus}}</span>
+                </dd>
+                <dt><span>Nationality</span></dt>
+                <dd>
+                    <span>{{userDetails.nationality}}</span>
+                </dd>
+                <dt><span>Place Of Nationality</span></dt>
+                <dd>
+                    <span>{{userDetails.placeOfNationality}}</span>
+                </dd>
+                <dt><span>Country Of Birth</span></dt>
+                <dd>
+                    <span>{{userDetails.countryOfBirth}}</span>
+                </dd>
+                <dt><span>Place Of Birth</span></dt>
+                <dd>
+                    <span>{{userDetails.placeOfBirth}}</span>
+                </dd>
+                <dt><span>Name Of Employer</span></dt>
+                <dd>
+                    <span>{{userDetails.nameOfEmployer}}</span>
+                </dd>
+                <dt><span>Annual Income</span></dt>
+                <dd>
+                    <span>{{userDetails.annualIncome}}</span>
+                </dd>
+                <dt><span>Address Type</span></dt>
+                <dd>
+                    <span>{{userDetails.addressType}}</span>
+                </dd>
+                <dt><span>Marital Status</span></dt>
+                <dd>
+                    <span>{{userDetails.maritalStatus}}</span>
+                </dd>
+                <dt><span>Uinfin</span></dt>
+                <dd>
+                    <span>{{userDetails.uinfin}}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{userDetails.createdDate}}</span>
+                </dd>
+                <dt><span>Modified Date</span></dt>
+                <dd>
+                    <span>{{userDetails.modifiedDate}}</span>
+                </dd>
+                <dt><span>Hash 1</span></dt>
+                <dd>
+                    <span>{{userDetails.hash1}}</span>
+                </dd>
+                <dt><span>Hash 2</span></dt>
+                <dd>
+                    <span>{{userDetails.hash2}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-details', userDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

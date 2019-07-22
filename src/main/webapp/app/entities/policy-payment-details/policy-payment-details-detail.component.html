@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="policyPaymentDetails">
+            <h2><span>Policy Payment Details</span> {{policyPaymentDetails.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Payment Transaction No</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.paymentTransactionNo}}</span>
+                </dd>
+                <dt><span>Prn No</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.prnNo}}</span>
+                </dd>
+                <dt><span>Encrypted Prn No</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.encryptedPrnNo}}</span>
+                </dd>
+                <dt><span>Total First Premium</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.totalFirstPremium}}</span>
+                </dd>
+                <dt><span>Payment Method</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.paymentMethod}}</span>
+                </dd>
+                <dt><span>Esb Payment Mode</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.esbPaymentMode}}</span>
+                </dd>
+                <dt><span>Payment Status</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.paymentStatus}}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.createdDate}}</span>
+                </dd>
+                <dt><span>Modified Date</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.modifiedDate}}</span>
+                </dd>
+                <dt><span>Created Time</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.createdTime}}</span>
+                </dd>
+                <dt><span>Modified Time</span></dt>
+                <dd>
+                    <span>{{policyPaymentDetails.modifiedTime}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/policy-payment-details', policyPaymentDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

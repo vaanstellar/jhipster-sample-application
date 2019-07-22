@@ -43,6 +43,16 @@ public class CacheConfiguration {
             createCache(cm, io.github.jhipster.application.domain.User.class.getName());
             createCache(cm, io.github.jhipster.application.domain.Authority.class.getName());
             createCache(cm, io.github.jhipster.application.domain.User.class.getName() + ".authorities");
+            createCache(cm, io.github.jhipster.application.domain.PolicyDetails.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.PolicyDetails.class.getName() + ".derivedDocs");
+            createCache(cm, io.github.jhipster.application.domain.UserDetails.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.UserDetails.class.getName() + ".policyDetails");
+            createCache(cm, io.github.jhipster.application.domain.PolicyPaymentDetails.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.DerivedDocs.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.DocTypeReference.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.DocTypeReference.class.getName() + ".derivedDocs");
+            createCache(cm, io.github.jhipster.application.domain.PolicyStateChart.class.getName());
+            createCache(cm, io.github.jhipster.application.domain.UserSuspension.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

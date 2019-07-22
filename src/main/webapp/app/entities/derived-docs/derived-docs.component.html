@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span>Derived Docs</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-derived-docs" [routerLink]="['/derived-docs/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Derived Docs
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="derivedDocs?.length === 0">
+        <span>No derivedDocs found</span>
+    </div>
+    <div class="table-responsive" *ngIf="derivedDocs?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="docContent"><span>Doc Content</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdDate"><span>Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedDate"><span>Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="policyDetails.id"><span>Policy Details</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="docTypeReference.id"><span>Doc Type Reference</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let derivedDocs of derivedDocs ;trackBy: trackId">
+                <td><a [routerLink]="['/derived-docs', derivedDocs.id, 'view' ]">{{derivedDocs.id}}</a></td>
+                <td>{{derivedDocs.docContent}}</td>
+                <td>{{derivedDocs.createdDate | date:'mediumDate'}}</td>
+                <td>{{derivedDocs.modifiedDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="derivedDocs.policyDetails">
+                        <a [routerLink]="['../policy-details', derivedDocs.policyDetails?.id, 'view' ]" >{{derivedDocs.policyDetails?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="derivedDocs.docTypeReference">
+                        <a [routerLink]="['../doc-type-reference', derivedDocs.docTypeReference?.id, 'view' ]" >{{derivedDocs.docTypeReference?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/derived-docs', derivedDocs.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/derived-docs', derivedDocs.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'derived-docs', { outlets: { popup: derivedDocs.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

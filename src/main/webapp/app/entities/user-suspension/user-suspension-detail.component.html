@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userSuspension">
+            <h2><span>User Suspension</span> {{userSuspension.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Email Id</span></dt>
+                <dd>
+                    <span>{{userSuspension.emailId}}</span>
+                </dd>
+                <dt><span>Retry Count</span></dt>
+                <dd>
+                    <span>{{userSuspension.retryCount}}</span>
+                </dd>
+                <dt><span>Suspension Time In Minutes</span></dt>
+                <dd>
+                    <span>{{userSuspension.suspensionTimeInMinutes}}</span>
+                </dd>
+                <dt><span>Reason</span></dt>
+                <dd>
+                    <span>{{userSuspension.reason}}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{userSuspension.createdDate}}</span>
+                </dd>
+                <dt><span>Modified Date</span></dt>
+                <dd>
+                    <span>{{userSuspension.modifiedDate}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-suspension', userSuspension.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

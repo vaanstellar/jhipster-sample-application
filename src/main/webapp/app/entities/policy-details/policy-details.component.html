@@ -1,0 +1,159 @@
+<div>
+    <h2 id="page-heading">
+        <span>Policy Details</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-policy-details" [routerLink]="['/policy-details/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Policy Details
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="policyDetails?.length === 0">
+        <span>No policyDetails found</span>
+    </div>
+    <div class="table-responsive" *ngIf="policyDetails?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="policyCode"><span>Policy Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="planCode"><span>Plan Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="planType"><span>Plan Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="agentCode"><span>Agent Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status"><span>Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="riderNames"><span>Rider Names</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="contactByCall"><span>Contact By Call</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="contactBySMS"><span>Contact By SMS</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nric"><span>Nric</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="gender"><span>Gender</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="birthDate"><span>Birth Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailId"><span>Email Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneNo"><span>Phone No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="educationLevel"><span>Education Level</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialPostalCode"><span>Residential Postal Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialUnitNo"><span>Residential Unit No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialAddress1"><span>Residential Address 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialAddress2"><span>Residential Address 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialAddress3"><span>Residential Address 3</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialAddress4"><span>Residential Address 4</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialSameAsMailing"><span>Residential Same As Mailing</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingPostalCode"><span>Mailing Postal Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingUnitNo"><span>Mailing Unit No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingAddress1"><span>Mailing Address 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingAddress2"><span>Mailing Address 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingAddress3"><span>Mailing Address 3</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailingAddress4"><span>Mailing Address 4</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="occupation"><span>Occupation</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="residentialStatus"><span>Residential Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nationality"><span>Nationality</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="placeOfNationality"><span>Place Of Nationality</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="countryOfBirth"><span>Country Of Birth</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="placeOfBirth"><span>Place Of Birth</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="occupationCode"><span>Occupation Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nameOfEmployer"><span>Name Of Employer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="annualIncome"><span>Annual Income</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="addressType"><span>Address Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="maritalStatus"><span>Marital Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="uinfin"><span>Uinfin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="myInfoVerified"><span>My Info Verified</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdDate"><span>Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedDate"><span>Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="policyPaymentDetails.id"><span>Policy Payment Details</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="policyStateChart.id"><span>Policy State Chart</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="userDetails.id"><span>User Details</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let policyDetails of policyDetails ;trackBy: trackId">
+                <td><a [routerLink]="['/policy-details', policyDetails.id, 'view' ]">{{policyDetails.id}}</a></td>
+                <td>{{policyDetails.policyCode}}</td>
+                <td>{{policyDetails.planCode}}</td>
+                <td>{{policyDetails.planType}}</td>
+                <td>{{policyDetails.agentCode}}</td>
+                <td>{{policyDetails.status}}</td>
+                <td>{{policyDetails.riderNames}}</td>
+                <td>{{policyDetails.contactByCall}}</td>
+                <td>{{policyDetails.contactBySMS}}</td>
+                <td>{{policyDetails.nric}}</td>
+                <td>{{policyDetails.name}}</td>
+                <td>{{policyDetails.gender}}</td>
+                <td>{{policyDetails.birthDate}}</td>
+                <td>{{policyDetails.emailId}}</td>
+                <td>{{policyDetails.phoneNo}}</td>
+                <td>{{policyDetails.educationLevel}}</td>
+                <td>{{policyDetails.residentialPostalCode}}</td>
+                <td>{{policyDetails.residentialUnitNo}}</td>
+                <td>{{policyDetails.residentialAddress1}}</td>
+                <td>{{policyDetails.residentialAddress2}}</td>
+                <td>{{policyDetails.residentialAddress3}}</td>
+                <td>{{policyDetails.residentialAddress4}}</td>
+                <td>{{policyDetails.residentialSameAsMailing}}</td>
+                <td>{{policyDetails.mailingPostalCode}}</td>
+                <td>{{policyDetails.mailingUnitNo}}</td>
+                <td>{{policyDetails.mailingAddress1}}</td>
+                <td>{{policyDetails.mailingAddress2}}</td>
+                <td>{{policyDetails.mailingAddress3}}</td>
+                <td>{{policyDetails.mailingAddress4}}</td>
+                <td>{{policyDetails.occupation}}</td>
+                <td>{{policyDetails.residentialStatus}}</td>
+                <td>{{policyDetails.nationality}}</td>
+                <td>{{policyDetails.placeOfNationality}}</td>
+                <td>{{policyDetails.countryOfBirth}}</td>
+                <td>{{policyDetails.placeOfBirth}}</td>
+                <td>{{policyDetails.occupationCode}}</td>
+                <td>{{policyDetails.nameOfEmployer}}</td>
+                <td>{{policyDetails.annualIncome}}</td>
+                <td>{{policyDetails.addressType}}</td>
+                <td>{{policyDetails.maritalStatus}}</td>
+                <td>{{policyDetails.uinfin}}</td>
+                <td>{{policyDetails.myInfoVerified}}</td>
+                <td>{{policyDetails.createdDate | date:'mediumDate'}}</td>
+                <td>{{policyDetails.modifiedDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="policyDetails.policyPaymentDetails">
+                        <a [routerLink]="['../policy-payment-details', policyDetails.policyPaymentDetails?.id, 'view' ]" >{{policyDetails.policyPaymentDetails?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="policyDetails.policyStateChart">
+                        <a [routerLink]="['../policy-state-chart', policyDetails.policyStateChart?.id, 'view' ]" >{{policyDetails.policyStateChart?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="policyDetails.userDetails">
+                        <a [routerLink]="['../user-details', policyDetails.userDetails?.id, 'view' ]" >{{policyDetails.userDetails?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/policy-details', policyDetails.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/policy-details', policyDetails.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'policy-details', { outlets: { popup: policyDetails.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

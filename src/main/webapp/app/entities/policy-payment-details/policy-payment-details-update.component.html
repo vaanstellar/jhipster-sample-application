@@ -1,0 +1,119 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-policy-payment-details-heading">Create or edit a Policy Payment Details</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_paymentTransactionNo">Payment Transaction No</label>
+                    <input type="text" class="form-control" name="paymentTransactionNo" id="field_paymentTransactionNo"
+                           formControlName="paymentTransactionNo"/>
+                    <div *ngIf="editForm.get('paymentTransactionNo').invalid && (editForm.get('paymentTransactionNo').dirty || editForm.get('paymentTransactionNo').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('paymentTransactionNo').errors.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_prnNo">Prn No</label>
+                    <input type="text" class="form-control" name="prnNo" id="field_prnNo"
+                           formControlName="prnNo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_encryptedPrnNo">Encrypted Prn No</label>
+                    <input type="text" class="form-control" name="encryptedPrnNo" id="field_encryptedPrnNo"
+                           formControlName="encryptedPrnNo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_totalFirstPremium">Total First Premium</label>
+                    <input type="text" class="form-control" name="totalFirstPremium" id="field_totalFirstPremium"
+                           formControlName="totalFirstPremium"/>
+                    <div *ngIf="editForm.get('totalFirstPremium').invalid && (editForm.get('totalFirstPremium').dirty || editForm.get('totalFirstPremium').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('totalFirstPremium').errors.maxlength">
+                        This field cannot be longer than 25 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_paymentMethod">Payment Method</label>
+                    <input type="text" class="form-control" name="paymentMethod" id="field_paymentMethod"
+                           formControlName="paymentMethod"/>
+                    <div *ngIf="editForm.get('paymentMethod').invalid && (editForm.get('paymentMethod').dirty || editForm.get('paymentMethod').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('paymentMethod').errors.maxlength">
+                        This field cannot be longer than 25 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_esbPaymentMode">Esb Payment Mode</label>
+                    <input type="text" class="form-control" name="esbPaymentMode" id="field_esbPaymentMode"
+                           formControlName="esbPaymentMode"/>
+                    <div *ngIf="editForm.get('esbPaymentMode').invalid && (editForm.get('esbPaymentMode').dirty || editForm.get('esbPaymentMode').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('esbPaymentMode').errors.maxlength">
+                        This field cannot be longer than 25 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_paymentStatus">Payment Status</label>
+                    <input type="text" class="form-control" name="paymentStatus" id="field_paymentStatus"
+                           formControlName="paymentStatus"/>
+                    <div *ngIf="editForm.get('paymentStatus').invalid && (editForm.get('paymentStatus').dirty || editForm.get('paymentStatus').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('paymentStatus').errors.maxlength">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <div class="input-group">
+                        <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" formControlName="createdDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modifiedDate">Modified Date</label>
+                    <div class="input-group">
+                        <input id="field_modifiedDate" type="text" class="form-control" name="modifiedDate" ngbDatepicker  #modifiedDateDp="ngbDatepicker" formControlName="modifiedDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="modifiedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdTime">Created Time</label>
+                    <div class="d-flex">
+                        <input id="field_createdTime" type="datetime-local" class="form-control" name="createdTime" formControlName="createdTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modifiedTime">Modified Time</label>
+                    <div class="d-flex">
+                        <input id="field_modifiedTime" type="datetime-local" class="form-control" name="modifiedTime" formControlName="modifiedTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
